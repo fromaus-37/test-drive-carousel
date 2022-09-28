@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
+const distDir = path.resolve('./dist');
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -25,6 +27,6 @@ module.exports = {
   },
   output: {
     //clean: true,
-    path: path.resolve('./dist'),
+    path: distDir,
   },
 };

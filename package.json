@@ -8,7 +8,8 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "jest",
-    "build": "webpack"
+    "build": "webpack",
+    "dev": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "prop-types": "15.8.1",
-    "react": "16.14.0"
+    "react": "16.14.0",
+    "webpack-dev-server": "4.11.1"
   }
 }
