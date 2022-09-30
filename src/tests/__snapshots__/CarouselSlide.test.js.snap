@@ -4,7 +4,7 @@ exports[`CarouselSlide renders correctly 1`] = `
 <figure>
   <CarouselSlide__DefaultImg
     imgHeight={500}
-    src=""
+    src="http://example.com/default.jpg"
   />
   <figcaption>
     <strong>
