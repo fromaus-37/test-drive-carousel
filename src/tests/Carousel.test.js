@@ -23,7 +23,7 @@ describe('Carousel', () => {
     {
       imgUrl:
         'https://images.unsplash.com/photo-1664151268423-a11a2757f0f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
-      artwork: 'artwork',
+      description: 'artwork',
       attribution: 'author3',
     },
   ];
@@ -92,10 +92,10 @@ describe('Carousel', () => {
   it('Renders the current slide as a CarouselSlide', () => {
     let slideProps;
     slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual(slides[0]);
+    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[0] });
 
     wrapper.setState({ slideIndex: 1 });
     slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual(slides[1]);
+    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[1] });
   });
 });
