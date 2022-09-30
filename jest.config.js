@@ -5,4 +5,5 @@ module.exports = {
   testEnvironmentOptions: {
     url: 'http://localhost/',
   },
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };
