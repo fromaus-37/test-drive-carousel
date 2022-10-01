@@ -9,7 +9,7 @@ describe('CarouselSlide', () => {
     wrapper = shallow(
       <CarouselSlide
         imgUrl="http://example.com/default.jpg"
-        description="Default test image"
+        description="Default tet image"
       />
     );
   });
