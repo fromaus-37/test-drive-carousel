@@ -2,35 +2,36 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CarouselButton from './CarouselButton';
 import CarouselSlide from './CarouselSlide';
+import HasIndex from './HasIndex';
 
-class Carousel extends React.PureComponent {
+export class Carousel extends React.PureComponent {
   handlePrevClick = () => {
-    const { slides } = this.props;
-    this.setState(({ slideIndex }) => ({
-      slideIndex: slideIndex - 1 == -1 ? slides.length - 1 : slideIndex - 1,
-    }));
+    const { slideIndexDecrement, slides } = this.props;
+    slideIndexDecrement(slides.length);
   };
 
   handleNextClick = () => {
-    const { slides } = this.props;
-    this.setState(({ slideIndex }) => ({
-      slideIndex: (slideIndex + 1) % slides.length,
-    }));
-  };
-
-  state = {
-    slideIndex: 0,
+    const { slideIndexIncrement, slides } = this.props;
+    slideIndexIncrement(slides.length);
   };
 
   render() {
-    const { defaultImg, defaultImgHeight, slides, ...rest } = this.props;
+    const {
+      defaultImg,
+      defaultImgHeight,
+      slideIndex,
+      slideIndexDecrement: _slideIndexDecrement,
+      slideIndexIncrement: _slideIndexIncrement,
+      slides,
+      ...rest
+    } = this.props;
 
     return (
       <div {...rest}>
         <CarouselSlide
           imgHeight={defaultImgHeight}
           Img={defaultImg}
-          {...slides[this.state.slideIndex]}
+          {...slides[slideIndex]}
         />
         <CarouselButton data-action="prev" onClick={this.handlePrevClick}>
           Prev
@@ -47,11 +48,15 @@ class Carousel extends React.PureComponent {
     defaultImgHeight: CarouselSlide.propTypes.imgHeight,
     slides: PropTypes.arrayOf(PropTypes.shape(CarouselSlide.propTypes))
       .isRequired,
+    slideIndex: PropTypes.number.isRequired,
+    slideIndexDecrement: PropTypes.func.isRequired,
+    slideIndexIncrement: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
+    defaultImg: CarouselSlide.defaultProps.Img,
     defaultImgHeight: CarouselSlide.defaultProps.imgHeight,
   };
 }
 
-export default Carousel;
+export default HasIndex(Carousel, 'slideIndex');
