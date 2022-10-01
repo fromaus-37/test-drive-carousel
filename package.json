@@ -5,9 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint:js": "eslint . && prettier --check .",
+    "lint:js": "eslint .",
     "lint:css": "stylelint ./src/**/*.js",
-    "lint": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:js && npm run lint:css && prettier --check .",
     "format": "prettier --write .",
     "test": "jest",
     "build": "webpack",
